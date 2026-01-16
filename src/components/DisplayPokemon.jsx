@@ -35,11 +35,11 @@ export default function DisplayPokemon({name = "pikachu"}) {
    
    return (
       <div className="pokemon-card">
-         <h1>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
+         <h2>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
          <img
-            src={pokemon.sprites.front_default}
+            className="pokemon-img"
+            src={pokemon.sprites.other.dream_world.front_default}
             alt={pokemon.name}
-            width={200}
          />
       </div>
    )
