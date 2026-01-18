@@ -1,11 +1,22 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, memo } from 'react'
 
-export default function DisplayPokemon({name = "pikachu"}) {
-   const [pokemon, setPokemon] = useState(null);
-   const [loading, setLoading] = useState(true);
+// this is to prevent reloading after every click
+// making a single api call
+const pokemonCache ={};
+
+const DisplayPokemon = memo(function DisplayPokemon({name = "pikachu"}) {
+   const [pokemon, setPokemon] = useState(pokemonCache[name] || null);
+   const [loading, setLoading] = useState(!pokemonCache[name]);
    const [error, setError] = useState(null);
 
    useEffect(() => {
+      // detect if data is already cached
+      if (pokemonCache[name]) {
+         setPokemon(pokemonCache[name]);
+         setLoading(false);
+         return;
+      }
+
       const fetchPokemon = async () => {
          try {
             setLoading(true); //reset loading state
@@ -17,6 +28,7 @@ export default function DisplayPokemon({name = "pikachu"}) {
                throw new Error ('Failed to fetch Pokémon');
             }
             const data = await response.json();
+            pokemonCache[name] = data; //cache data
             setPokemon(data);
             setError(null); // clear error on success
          } catch (err) {
@@ -43,5 +55,7 @@ export default function DisplayPokemon({name = "pikachu"}) {
          />
       </div>
    )
-}
+});
+
+export default DisplayPokemon;
 
