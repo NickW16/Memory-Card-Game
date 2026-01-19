@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import DisplayPokemon from './DisplayPokemon.jsx';
 
 export default function PokemonGameLogic() { 
@@ -20,12 +20,27 @@ export default function PokemonGameLogic() {
    const [selectedPokemon, setSelectedPokemon] = useState([]);
    const [gameScore, setGameScore] = useState(0);
 
-   const shufflePokemon = () => {
+ // NEW FISHER YATES ALGORITHM:
+   const shufflePokemon = useCallback(() => {
       setPokemon(prev => {
-         const shuffled = [...prev];
-         return shuffled.sort(() => Math.random() -0.5);
-      });
-   };
+      const shuffled = [...prev];
+
+      for (let i = shuffled.length - 1; i > 0; i--) {
+         const j = Math.floor(Math.random() * (i + 1));
+
+         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+   });
+   }, []);
+
+//   OLD SHUFFLE ALGORITHM:
+//   const shufflePokemon = () => {
+//      setPokemon(prev => {
+//         const shuffled = [...prev];
+//         return shuffled.sort(() => Math.random() -0.5);
+//      });
+//   };
 
    const cardClick = (pokemonName) => {
       setSelectedPokemon(prev => {
@@ -84,7 +99,7 @@ export default function PokemonGameLogic() {
 //         <h3>Current Score:</h3>
 //         <p>{gameScore}</p>
 //         </div>
-   // IT IS JUST BETTER TO RENDER DIRECTLY INSTEAD OF DEFINING COMPONENTS BEFORE //
+// IT IS JUST BETTER TO RENDER DIRECTLY INSTEAD OF DEFINING COMPONENTS BEFORE //
 
       return (
             <div>
