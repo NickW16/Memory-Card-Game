@@ -19,6 +19,7 @@ export default function PokemonGameLogic() {
 
    const [selectedPokemon, setSelectedPokemon] = useState([]);
    const [gameScore, setGameScore] = useState(0);
+   const [highScore, setHighScore] = useState(0);
 
  // NEW FISHER YATES ALGORITHM:
    const shufflePokemon = useCallback(() => {
@@ -57,6 +58,9 @@ export default function PokemonGameLogic() {
 
     useEffect(() => {
       setGameScore(selectedPokemon.length);
+      if (gameScore > highScore) {
+         setHighScore(gameScore);
+      }
    },[selectedPokemon]);
 
 
@@ -105,6 +109,8 @@ export default function PokemonGameLogic() {
             <div>
 
               <div>
+               <h3>Highest Score</h3>
+               <p>{highScore}</p>
                <h3>Current Score</h3>
                <p>{gameScore}</p>
               </div>
