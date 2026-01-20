@@ -1,11 +1,24 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  font-family: 'Courier New', monospace;
   line-height: 1.5;
   font-weight: 400;
 
+  /* color variables*/
+
+  --color-primary: #A8D5A8; 
+  --color-secondary: #6B9B6B;
+  --color-background: #F5F5DC;
+  --color-headers: #4A7C59;
+  --color-panels: #E8F4E8;
+  --color-red: #C62828;
+  --color-black: #1B1B1B;
+  --color-blue: #0D47A1;
+  --color-terminal-border: #0d3d1f;
+
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--color-headers);
+  background-color: var(--color-background);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -25,7 +38,6 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -36,13 +48,14 @@ h1 {
 }
 
 button {
+  color: var(--color-secondary);
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--color-panels);;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -72,6 +85,70 @@ h2 {
    margin: 0;
 }
 
+#title-and-score {
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-end;
+}
+
+#game-container {
+   background-color: var(--color-red);
+   border: 8px solid #0D47A1;
+   padding: 20px;
+   border-radius: 25px;
+   box-shadow:
+      inset 0 0 10px rgba(0, 255, 65, 0.1),
+      0 0 20px rgba(0, 0, 0, 0.5);
+
+}
+
+/* terminal colors for title and score */
+
+h1,
+#score-container {
+   display: flex;  
+   justify-content: center;
+   gap: 30px;
+   
+   /* Terminal! */
+   background-color: #0a0a0a;
+   color: #00ff41; 
+   font-size: 14px;
+   padding: 5px;
+   margin-right: 20px;
+   border-radius: 8px;
+   border: 8px solid var(--color-terminal-border);
+   border-bottom: 0px;
+   
+   font-family: 'Courier New', monospace;
+   font-weight: bold;
+   letter-spacing: 1px;
+   
+   /* glow terminal effect */
+   box-shadow: 
+      inset 0 0 10px rgba(0, 255, 65, 0.1),
+      0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+   font-size: 46px;
+   border-radius: 4px;
+   border-bottom: 0;
+   margin: 0px;
+   padding: 10px;
+   padding-bottom: 20px;
+   text-align: center;
+   justify-self: center;
+   width: 60%;
+   margin-left: 20px;
+}
+
+#score-container {
+   font-size: 14px;
+   margin-right: 20px;
+   padding: 0px 10px 0px 10px;
+}
+
 #cards-container {
    display: flex;
    justify-content: center;
@@ -80,12 +157,63 @@ h2 {
 }
 
 .pokemon-button {
-   border: 4px solid white;
+   border: 4px solid var(--color-primary);
    width: 175px;
-   border-radius: 4px;
+   border-radius: 25px;
    padding: 6px;
+   transition: all 0.3s ease;
+}
+
+.pokemon-button:hover {
+   transform: translateY(-5px);
 }
 
 .pokemon-img {
    height: 150px;
+}
+
+#rules-button {
+   justify-self: end;
+
+   /* Terminal! */
+   background-color: #0a0a0a;
+   color: #00ff41; 
+   font-size: 14px;
+   padding: 5px;
+   margin-right: 20px;
+   border-radius: 6px;
+   border: 8px solid var(--color-blue);
+   border-top: 0px;
+   
+   font-family: 'Courier New', monospace;
+   font-weight: bold;
+   letter-spacing: 1px;
+   
+   /* glow terminal effect */
+   box-shadow: 
+      inset 0 0 10px rgba(0, 255, 65, 0.1),
+      0 0 20px rgba(0, 0, 0, 0.5);
+
+}
+
+
+#github-credits {
+   color: black;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 10px;
+   padding-top: 20px;
+}
+
+.github-icon {
+   filter: invert(100%);
+   height: 20px;
+}
+
+.github-icon:hover {
+    filter: invert(0%);
+    transition: 0.2s;
+    animation: grow-more 1000ms ease-out;
+    animation-fill-mode: forwards;
 }

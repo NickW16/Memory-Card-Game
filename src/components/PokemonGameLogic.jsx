@@ -107,13 +107,17 @@ export default function PokemonGameLogic() {
 
       return (
             <div>
+               <div id="title-and-score">
+                 <h1>Pokémon Memory Game!</h1>
 
-              <div>
-               <h3>Highest Score</h3>
-               <p>{highScore}</p>
-               <h3>Current Score</h3>
-               <p>{gameScore}</p>
-              </div>
+                 <div id="score-container">
+                     <h3>Current Score</h3>
+                     <h4>{gameScore}</h4>
+                     <h3>Highest Score</h3>
+                     <h4>{highScore}</h4>
+                 </div>
+               </div>
+            <div id="game-container">
 
               <div id="cards-container">
                   {pokemon.map((pokemonName, index) => (
@@ -127,7 +131,11 @@ export default function PokemonGameLogic() {
                      </button>
                   ))}
               </div>
-
+            
+            </div>
+                  <button id="rules-button">
+                     <p>Click a Pokémon but do not click a Pokémon you've clicked before!</p>
+                  </button>
             </div> 
       )
 }
