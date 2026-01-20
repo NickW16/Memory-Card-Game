@@ -17,7 +17,8 @@
   --color-terminal-border: #0d3d1f;
 
   color-scheme: light dark;
-  color: var(--color-headers);
+  background-image: url('./assets/background-sky.jpg');
+  color: var(--colorF5F5DC-headers);
   background-color: var(--color-background);
 
   font-synthesis: none;
