@@ -47,7 +47,7 @@ const DisplayPokemon = memo(function DisplayPokemon({name = "pikachu"}) {
    
    return (
       <div className="pokemon-card">
-         <h2>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
+         <h2 className="pokemon-name">{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
          <img
             className="pokemon-img"
             src={pokemon.sprites.other.dream_world.front_default}

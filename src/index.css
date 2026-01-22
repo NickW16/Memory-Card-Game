@@ -173,31 +173,6 @@ h1 {
    height: 150px;
 }
 
-#rules-button {
-   justify-self: end;
-
-   /* Terminal! */
-   background-color: #0a0a0a;
-   color: #00ff41; 
-   font-size: 14px;
-   padding: 5px;
-   margin-right: 20px;
-   border-radius: 6px;
-   border: 8px solid var(--color-blue);
-   border-top: 0px;
-   
-   font-family: 'Courier New', monospace;
-   font-weight: bold;
-   letter-spacing: 1px;
-   
-   /* glow terminal effect */
-   box-shadow: 
-      inset 0 0 10px rgba(0, 255, 65, 0.1),
-      0 0 20px rgba(0, 0, 0, 0.5);
-
-}
-
-
 #github-credits {
    color: black;
    display: flex;
@@ -217,4 +192,45 @@ h1 {
     transition: 0.2s;
     animation: grow-more 1000ms ease-out;
     animation-fill-mode: forwards;
+}
+
+/* responsiveness section */
+
+@media (max-width: 786px) {
+   #title-and-score {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+   }
+
+   h1 {
+      margin: 0px;
+      margin-bottom: 10px;
+      border: none;
+      padding: 20px;
+   }
+
+   #score-container {
+      margin: 20px;
+      margin-bottom: 0px;
+      align-self: center;
+      font-size: 12px;
+   }
+
+   #game-container {
+      padding: 10px;
+   }
+
+   .pokemon-name {
+      display: none;
+   }
+
+   .pokemon-button {
+      width: 45%;
+      height: 30%;
+   }
+
+   .pokemon-img {
+      width: 80%;
+   }
 }

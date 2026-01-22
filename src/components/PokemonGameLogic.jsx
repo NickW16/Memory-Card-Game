@@ -133,9 +133,9 @@ export default function PokemonGameLogic() {
               </div>
             
             </div>
-                  <button id="rules-button">
+                  <div id="rules-section">
                      <p>Click a Pokémon but do not click a Pokémon you've clicked before!</p>
-                  </button>
+                  </div>
             </div> 
       )
 }
